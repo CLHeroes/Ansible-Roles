@@ -1,5 +1,5 @@
 ---
-- name: use motd role playbook
+- name: use lb role playbook
   hosts: prdx-lb1
   user: ansible
   become: true
