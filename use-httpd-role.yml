@@ -1,6 +1,6 @@
 ---
-- name: use motd role playbook
-  hosts: prdx-web
+- name: use httpd role playbook
+  hosts: prdx-web1
   user: ansible
   become: true
   roles:
