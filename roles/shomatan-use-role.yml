@@ -1,0 +1,7 @@
+---
+- name: use shomatan.vsftpd role
+  hosts: ftpserver
+  user: root
+  become: true
+  roles: 
+  - shomatan.vsftpd  
