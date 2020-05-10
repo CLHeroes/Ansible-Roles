@@ -1,0 +1,11 @@
+---
+# tasks file for httpd-server
+- name: Install httpd software
+  yum: name=httpd state=present
+  notify: Restart httpd service
+
+- name: Ensure dependencies are installed.
+  package: name=libselinux-python state=present
+
+- name: Generate home page
+  template: src=index.html.j2 dest=/var/www/html/index.html
