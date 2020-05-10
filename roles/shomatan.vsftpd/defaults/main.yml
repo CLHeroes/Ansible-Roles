@@ -9,7 +9,7 @@ vsftpd_ascii_download_enable: YES
 vsftpd_chroot_local_user: YES
 vsftpd_chroot_list_enable: YES
 vsftpd_chroot_list_file: /etc/vsftpd/chroot_list
-vsftpd_ftpd_banner: Welcome to my FTP service.
+vsftpd_ftpd_banner: Welcome to CL HEROS FTP service.
 vsftpd_ls_recurse_enable: YES
 vsftpd_listen: YES
 vsftpd_listen_ipv6: NO
