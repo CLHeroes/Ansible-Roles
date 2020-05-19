@@ -16,20 +16,24 @@
         state: directory
         owner: root
         group: root
-        mode: 0755
+        mode: 0777
       with_items:
       - /var/ftp
       - /var/ftp/repo
   vars: 
-    - source_iso: "/images/CentOS-7-x86_64-Minimal-1908.iso"
-    - dest_iso: "/var/ftp/repo/CentOS-7-x86_64-Minimal-1908.iso"
+    - source_iso: "/images/CentOS-7-x86_64-DVD-1908.iso"
+    - dest_iso: "/var/ftp/repo/CentOS-7-x86_64-DVD-1908.iso"
     - repo_mount: "/var/ftp/repo"
   tasks:
     - name: Upload the ISO file to the prdx-ftp301 server
-      copy:
-        src: "{{ source_iso }}"
-        dest: "{{ dest_iso }}"
-        force: no 
+      command:
+        mv:
+          src: "{{ source_iso }}"
+          dest: "{{ dest_iso }}"
+          force: no
+          remote_src: yes
+          mode: preserve 
+          become: yes  
     - name: Mount the ISO file
       mount: 
         path: "{{ repo_mount }}"

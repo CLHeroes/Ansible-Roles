@@ -1,9 +1,9 @@
 ---
-- name: use unxnn.chrony role
-  hosts: ntp-clients
+- name: use ntp-role role
+  hosts: all
   user: ansible
   become: true
 
   roles:
-    - unxnn.chrony
+    - ntp-role
 

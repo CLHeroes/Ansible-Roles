@@ -1,6 +1,6 @@
 ---
 - name: use lb role playbook
-  hosts: prdx-lb1
+  hosts: lb2
   user: ansible
   become: true
   roles:

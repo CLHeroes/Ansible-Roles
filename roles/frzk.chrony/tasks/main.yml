@@ -61,4 +61,3 @@
   service:
     name: "{{ chrony_service_name }}"
     enabled: true
-...

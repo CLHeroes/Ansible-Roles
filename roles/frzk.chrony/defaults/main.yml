@@ -16,5 +16,3 @@ chrony_makestep_limit: 10
 chrony_allow:
   - 192.168.34.0/24
 chrony_deny: []
-...
-

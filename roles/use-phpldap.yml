@@ -1,0 +1,9 @@
+---
+- name: use php-ldap role
+  hosts: phpldap
+  user: ansible
+  become: true
+
+  roles:
+    - php-ldap
+
