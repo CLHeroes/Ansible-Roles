@@ -1,0 +1,73 @@
+---
+- name: Setup dns slave 3
+  hosts: test2
+  remote_user: ansible
+  become: yes
+  tasks:
+
+  - name: Install packages
+    yum:
+      name:
+        - bind
+        - bind-utils
+      state: latest
+
+  - name: Configure dns slave3
+    template:
+      src: dnss3.j2
+      dest: /etc/named.conf
+
+  - name: Restart named
+    service:
+      name: named
+      state: restarted
+
+###Master
+- name: Add to master's record
+  hosts: dnsm
+  remote_user: ansible
+  become: yes
+  tasks:
+
+  - name: Append to flz
+    lineinfile:
+      path: /var/named/ziyotek3.flz
+      line: 'IN      NS      prdx-nsw303.ziyotek3.local.'
+      state: present
+
+  - name: Update Serial flz
+    lineinfile:
+      path: /var/named/ziyotek3.flz
+      regex: 'serial$'
+      line: '2020053001  ; srial'
+
+
+  - name: Append to rlz
+    lineinfile:
+      path: /var/named/ziyotek3.rlz
+      line: '101      IN     PTR      prdx-nsw303.ziyotek3.local.'
+      state: present
+
+  - name: Update Serial flz
+    lineinfile:
+      path: /var/named/ziyotek3.rlz
+      regex: 'serial$'
+      line: '2020053001  ; srial'
+
+  - name: Update named.conf
+    lineinfile:
+      path: /etc/named.conf
+      regex: 'allow-transfer { localhost; 192.168.34.13; 192.168.34.14; };'
+      line: 'allow-transfer { localhost; 192.168.34.13; 192.168.34.14; 192.168.34.101;};'
+
+
+  - name: Update named.conf
+    lineinfile:
+      path: /etc/named.conf
+      regex: 'also-notify { 192.168.34.13; 192.168.34.14; };'
+      line: 'also-notify { 192.168.34.13; 192.168.34.14; 192.168.34.101; };'
+
+  - name: Restart
+    service:
+      name: named
+      state: restarted

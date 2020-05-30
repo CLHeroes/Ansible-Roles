@@ -33,3 +33,16 @@
 
 - name: Ensure HAProxy is started and enabled on boot.
   service: name=haproxy state=started enabled=yes
+
+- name: keepalived install
+  package: name=keepalived state=present
+
+- name: Ensure keepalived is started and enabled on boot.
+  service: name=keepalived state=started enabled=yes
+
+- name: Create keepalived conf file
+  copy: 
+    src: keepalived.conf.j2
+    dest: /etc/keepalived/keepalived.conf
+    mode: 0644
+  notify: restart keepalived 

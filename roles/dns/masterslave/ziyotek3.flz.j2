@@ -1,0 +1,51 @@
+$TTL 1D
+@       IN SOA  prdx-nsm301.ziyotek3.local. root.prdx-nsm301.ziyotek3.local. (
+                                        20200524        ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+
+; name servers NS records
+                IN      NS      prdx-nsm301.ziyotek3.local.
+                IN      NS      prdx-nsw301.ziyotek3.local.
+                IN      NS      prdx-nsw302.ziyotek3.local.
+
+; mail server MX records
+
+        IN      MX      19      prdx-mail301.ziyotek3.local.
+
+
+; name servers A records
+prdx-ntp301     IN      A       192.168.34.15
+prdx-ntp302     IN      A       192.168.34.11
+prdx-nsm301     IN      A       192.168.34.12
+prdx-nsw301     IN      A       192.168.34.13
+prdx-nsw302     IN      A       192.168.34.14
+prdx-pxe301     IN      A       192.168.34.10
+prdx-ftp301     IN      A       192.168.34.16
+prdx-nfs301     IN      A       192.168.34.77
+prdx-samba301   IN      A       192.168.34.18
+prdx-mail301    IN      A       192.168.34.19
+prdx-db361      IN      A       192.168.34.20
+prdx-db371      IN      A       192.168.34.21
+prdx-web361     IN      A       192.168.34.22
+prdx-web371     IN      A       192.168.34.23
+prdx-web362     IN      A       192.168.34.24
+prdx-web372     IN      A       192.168.34.25
+prdx-web363     IN      A       192.168.34.26
+prdx-web373     IN      A       192.168.34.27
+prdx-lb361      IN      A       192.168.34.122
+prdx-lb371      IN      A       192.168.34.123
+prdx-nagios301  IN      A       192.168.34.30
+prdx-ldap301    IN      A       192.168.34.31
+prdx-ansible301 IN      A       192.168.34.32
+prdx-dockm301   IN      A       192.168.34.33
+prdx-dockw301   IN      A       192.168.34.34
+prdx-dockw302   IN      A       192.168.34.35
+prdx-jenkins301 IN      A       192.168.34.36
+prdx-kubem301   IN      A       192.168.34.37
+prdx-kubew301   IN      A       192.168.34.38
+prdx-kubew302   IN      A       192.168.34.39
+prdx-dblb301    IN      A       192.168.34.40
+

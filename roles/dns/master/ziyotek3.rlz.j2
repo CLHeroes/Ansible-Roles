@@ -1,0 +1,54 @@
+$TTL 1D
+@       IN SOA  prdx-nsm301.ziyotek3.local. root.prdx-nsm301.ziyotek3.local. (
+                                        20200524        ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+
+; name servers NS records
+                IN      NS      prdx-nsm301.ziyotek3.local.
+                IN      NS      prdx-nsw301.ziyotek3.local.
+                IN      NS      prdx-nsw302.ziyotek3.local.
+
+; name servers PTR records
+12              IN      PTR     prdx-nsm301.ziyotek3.local.
+13              IN      PTR     prdx-nsw301.ziyotek3.local.
+14              IN      PTR     prdx-nsw302.ziyotek3.local.
+
+; mail server MX records
+IN      MX      19      prdx-mail301.ziyotek3.local
+
+; name servers PTR records
+15              IN      PTR     prdx-ntp301.ziyotek3.local.
+11              IN      PTR     prdx-ntp302.ziyotek3.local.
+12              IN      PTR     prdx-nsm301.ziyotek3.local.
+13              IN      PTR     prdx-nsw301.ziyotek3.local.
+14              IN      PTR     prdx-nsw302.ziyotek3.local.
+10              IN      PTR     prdx-pxe301.ziyotek3.local.
+16              IN      PTR     prdx-ftp301.ziyotek3.local.
+77              IN      PTR     prdx-nfs301.ziyotek3.local.
+18              IN      PTR     prdx-samba301.ziyotek3.local.
+19              IN      PTR     prdx-mail301.ziyotek3.local.
+20              IN      PTR     prdx-db361.ziyotek3.local.
+21              IN      PTR     prdx-db371.ziyotek3.local.
+22              IN      PTR     prdx-web361.ziyotek3.local.
+23              IN      PTR     prdx-web371.ziyotek3.local.
+24              IN      PTR     prdx-web362.ziyotek3.local.
+25              IN      PTR     prdx-web372.ziyotek3.local.
+26              IN      PTR     prdx-web363.ziyotek3.local.
+27              IN      PTR     prdx-web373.ziyotek3.local.
+122             IN      PTR     prdx-lb361.ziyotek3.local.
+123             IN      PTR     prdx-lb371.ziyotek3.local.
+30              IN      PTR     prdx-nagios301.ziyotek3.local.
+31              IN      PTR     prdx-ldap301.ziyotek3.local.
+32              IN      PTR     prdx-ansible301.ziyotek3.local.
+33              IN      PTR     prdx-dockm301.ziyotek3.local.
+34              IN      PTR     prdx-dockw301.ziyotek3.local.
+35              IN      PTR     prdx-dockw302.ziyotek3.local.
+36              IN      PTR     prdx-jenkins301.ziyotek3.local.
+37              IN      PTR     prdx-kubem301.ziyotek3.local.
+38              IN      PTR     prdx-kubew301.ziyotek3.local.
+39              IN      PTR     prdx-kubew302.ziyotek3.local.
+40              IN      PTR     prdx-dblb301.ziyotek3.local.
+

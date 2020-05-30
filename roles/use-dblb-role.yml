@@ -1,0 +1,7 @@
+---
+- name: use lb role playbook
+  hosts: dblb
+  user: ansible
+  become: true
+  roles:
+    - dblb

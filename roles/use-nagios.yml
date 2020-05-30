@@ -1,14 +1,14 @@
 ---
-    - hosts: nagios-clients
+    - hosts: try
       remote_user: ansible
       become: true
       roles:
         #this is the Ansible Galaxy name, you could change it to ansible-nagios if directly downloading from github
         - { role: 'nagios-role', run_nagios_client: true }
       
-    - hosts: nagios
-      remote_user: ansible
-      become: true
-      roles:
+   # - hosts: nagios
+   #   remote_user: ansible
+   #   become: true
+   #   roles:
         #this is the Ansible Galaxy name, you could change it to ansible-nagios if directly downloading from github
-        - { role: 'nagios-role', run_nagios_server: true }
+   #    - { role: 'nagios-role', run_nagios_server: true }

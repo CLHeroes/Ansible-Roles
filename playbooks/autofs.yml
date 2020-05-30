@@ -1,9 +1,4 @@
----
-- name: AutoFs
-  hosts: test
-  remote_user: ansible
-  become: yes
-  tasks:
+# AutoFS
     - name: Install Packages
       yum:
         name:
@@ -18,18 +13,20 @@
         enabled: yes
 
     - name: showmount
-      shell: showmount -e 192.168.34.17
+      shell: showmount -e 192.168.34.77
           
     - name: mkdir
       file:
         state: directory
-        path: /home/guests
+        path: /home/users
         mode: '0755'
+        owner: root
+        group: root
 
     - name: auto.master
       lineinfile:
         path: /etc/auto.master
-        line: "/home/guests   /etc/auto.users"
+        line: "/home/users   /etc/auto.users --timeout 60"
         state: present
   
     - name: auto.users
@@ -37,7 +34,7 @@
         path: /etc/auto.users
         create: yes
         state: present
-        line: "*   -rw,sync 192.168.34.17:/rhome/&"
+        line: "*   -rw,sync 192.168.34.77:/home/users/&"
 
     - name: Restart Service
       service:

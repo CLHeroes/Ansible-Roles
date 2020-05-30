@@ -1,9 +1,9 @@
 ---
-- name: use ntp-role role
-  hosts: all
+- name: use ntp-client role
+  hosts: ntp-clients
   user: ansible
   become: true
 
   roles:
-    - ntp-role
+    - ntp-client
 

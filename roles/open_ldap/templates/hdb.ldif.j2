@@ -1,0 +1,11 @@
+dn: olcDatabase={2}hdb,cn=config
+changeType: modify
+replace: olcSuffix
+olcSuffix: dc=ziyotek3,dc=local
+-
+replace: olcRootDN
+olcRootDN: cn=admin,dc=ziyotek3,dc=local
+-
+replace: olcRootPW
+olcRootPW: {{ ldap_encripted_password.stdout }}
+

@@ -1,0 +1,78 @@
+---
+- name: DNS packages
+  hosts: dns
+  remote_user: ansible
+  become: yes
+  
+  tasks:
+  - name: Install packages
+    yum:
+      name: 
+        - bind
+        - bind-utils
+      state: latest
+  - name: start named
+    service: 
+      name: named 
+      state: started
+
+
+
+
+- name: Setup dns master
+  hosts: dnsm
+  remote_user: ansible
+  become: yes
+   
+  tasks:
+  - name: Configure dns master
+    template:
+      src: dnsm.j2
+      dest: /etc/named.conf
+  - name: copying .flz file
+    template:
+      src: ziyotek3.flz.j2
+      dest: /var/named/ziyotek3.flz
+  - name: copying .rlz file
+    template:
+      src: ziyotek3.rlz.j2
+      dest: /var/named/ziyotek3.rlz
+
+  - name: Start named
+    service: 
+      name: named 
+      state: started
+
+
+
+- name: Setup dns slave 1
+  hosts: dnss1
+  remote_user: ansible
+  become: yes
+  
+  tasks:
+  - name: Configure dns slave1
+    template:
+      src: dnss1.j2
+      dest: /etc/named.conf
+  - name: Restart named
+    service:
+      name: named
+      state: restarted
+
+
+
+- name: Setup dns slave 2
+  hosts: dnss2
+  remote_user: ansible
+  become: yes
+
+  tasks:
+  - name: Configure dns slave1
+    template:
+      src: dnss2.j2
+      dest: /etc/named.conf
+  - name: Restart named
+    service:
+      name: named
+      state: restarted

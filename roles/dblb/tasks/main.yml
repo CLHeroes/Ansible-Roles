@@ -1,0 +1,47 @@
+---
+- hosts: dbs
+  remote_user: ansible
+  become: yes
+  tasks:
+    - name: Create check user
+      shell: mysql -u root -p -e "INSERT INTO mysql.user (Host,User) values ('192.168.34.40','haproxycheck'); FLUSH PRIVILEGES;"
+
+    - name: Create root user
+      shell: mysql -u root -p -e "GRANT ALL PRIVILEGES ON *.* TO 'haproxyroot'@'192.168.34.40' IDENTIFIED BY 'password' WITH GRANT OPTION; FLUSH PRIVILEGES"
+
+
+- hosts: dblb
+  remote_user: ansible
+  become: yes
+  tasks:
+    - name: Install mysql and haproxy
+      yum:
+        name:
+          - 'mysql*'
+          - 'haproxy'
+        state: present
+    
+#    - name: Quick check 
+#      shell: mysql -h 192.168.34.20 -u haproxyroot -p "CL_Heroes"
+
+    - name: Start haproxy service    
+      service:
+        name: haproxy
+        state: present
+ 
+    - name: Copy original conf file for backup
+      shell: cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy-back.cfg
+
+    - name: Conf file
+      src: /ansible/roles/dbld/templates/cfg.j2
+      dest: /etc/haproxy/haproxy.cfg       
+      owner: root
+      group: root
+      mode: 0644
+
+    - name: restart haproxy.service
+      service:
+        name: haproxy
+        state: restarted
+
+

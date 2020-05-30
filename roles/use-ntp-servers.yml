@@ -1,8 +1,8 @@
 ---
-- name: use frzk.chrony role
+- name: use ntp-server role
   hosts: ntp
   user: ansible
   become: true
 
   roles:
-    - frzk.chrony
+    - ntp-server

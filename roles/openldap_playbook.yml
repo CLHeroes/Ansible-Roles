@@ -1,0 +1,11 @@
+# LDAP server config gggg
+---
+
+- name: configure ldap server
+  remote_user: ansible 
+  become: yes
+  hosts: prdx-ldap301
+  gather_facts: true
+  roles:
+    - open-ldap
+
